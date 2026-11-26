@@ -1,0 +1,44 @@
+# The public API of @mark1russell7/code-shape
+#
+# The names of each entry of the exports field, and the declaration of each name, without comments
+# and private members. The command `api-report check` compares this file with the built .d.ts files.
+# To accept a change of the API, start the build, then `api-report update`, and review the diff.
+
+## . (build/index.d.ts): names
+
+FunctionShape: build/index.d.ts#FunctionShape
+MIN_SHAPE_TOKENS: build/index.d.ts#MIN_SHAPE_TOKENS
+ShapeOptions: build/index.d.ts#ShapeOptions
+containsShape: build/index.d.ts#containsShape
+functionsOf: build/index.d.ts#functionsOf
+shapeHash: build/index.d.ts#shapeHash
+shapeTokens: build/index.d.ts#shapeTokens
+
+## Declarations
+
+### build/index.d.ts#FunctionShape
+export interface FunctionShape {
+  readonly name: string;
+  readonly line: number;
+  readonly tokens: readonly string[];
+}
+
+### build/index.d.ts#MIN_SHAPE_TOKENS
+export declare const MIN_SHAPE_TOKENS = 16;
+
+### build/index.d.ts#ShapeOptions
+export interface ShapeOptions {
+  readonly typescript?: boolean;
+}
+
+### build/index.d.ts#containsShape
+export declare function containsShape(haystack: readonly string[], needle: readonly string[]): boolean;
+
+### build/index.d.ts#functionsOf
+export declare function functionsOf(source: string, options?: ShapeOptions): FunctionShape[];
+
+### build/index.d.ts#shapeHash
+export declare function shapeHash(tokens: readonly string[]): string;
+
+### build/index.d.ts#shapeTokens
+export declare function shapeTokens(source: string, options?: ShapeOptions): string[];

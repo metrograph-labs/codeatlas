@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "@mark1russell7/code-shape",
+  "version": "0.0.1",
+  "description": "The light shape of a function: tokens with each name and literal replaced by its kind, and a hash, with no parser and no dependencies.",
+  "keywords": [
+    "clone",
+    "duplication",
+    "shape",
+    "tokens",
+    "hash"
+  ],
+  "homepage": "https://github.com/metrograph-labs/codeatlas/tree/main/packages/code-shape#readme",
+  "bugs": {
+    "url": "https://github.com/metrograph-labs/codeatlas/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metrograph-labs/codeatlas.git",
+    "directory": "packages/code-shape"
+  },
+  "license": "MIT",
+  "author": "Mark Russell (https://github.com/mark1russell7)",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "build"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "main": "./build/index.js",
+    "types": "./build/index.d.ts",
+    "exports": {
+      ".": {
+        "types": "./build/index.d.ts",
+        "import": "./build/index.js",
+        "default": "./build/index.js"
+      },
+      "./package.json": "./package.json"
+    }
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.test.json"
+  },
+  "devDependencies": {
+    "@mark1russell7/cue": "^2.1.1",
+    "@types/node": "^26.6.5",
+    "@vitest/coverage-v8": "^5.0.3",
+    "tsdown": "^0.23.2",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}
