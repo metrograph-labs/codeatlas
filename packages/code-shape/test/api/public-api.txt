@@ -8,8 +8,8 @@
 
 FunctionShape: build/index.d.ts#FunctionShape
 MIN_SHAPE_TOKENS: build/index.d.ts#MIN_SHAPE_TOKENS
-TYPESCRIPT_READ: build/index.d.ts#TYPESCRIPT_READ
 ShapeOptions: build/index.d.ts#ShapeOptions
+TYPESCRIPT_READ: build/index.d.ts#TYPESCRIPT_READ
 containsShape: build/index.d.ts#containsShape
 functionsOf: build/index.d.ts#functionsOf
 shapeHash: build/index.d.ts#shapeHash
