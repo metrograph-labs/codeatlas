@@ -30,7 +30,7 @@ for (const { name, line, tokens } of functionsOf(source, { typescript: true })) 
 - The keywords, `null`, the punctuators and the operators stay.
 - Comments and white space go.
 - With `typescript: true`, `stripTypeScriptTypes` of `node:module` first removes the types. The lines stay the same.
-- `stripTypeScriptTypes` is in Node.js 22.13 and later. On an older Node.js 22, the package loads and reads JavaScript, `TYPESCRIPT_READ` is false, and a read with `typescript` throws an error that names the Node.js version.
+- `stripTypeScriptTypes` is in Node.js 22.13 and later. On an older Node.js 22, the package loads and reads JavaScript, and `TYPESCRIPT_READ` is false. Then a read with `typescript` throws an error that names the Node.js version.
 
 A slash starts a regular expression after an operator or a punctuator other than `)`, `]` and `}`. It also starts one after a keyword, for example `return`, and at the start of the source. Else it is a division.
 

@@ -27,13 +27,13 @@ export interface FunctionShape {
 ### build/index.d.ts#MIN_SHAPE_TOKENS
 export declare const MIN_SHAPE_TOKENS = 16;
 
-### build/index.d.ts#TYPESCRIPT_READ
-export declare const TYPESCRIPT_READ: boolean;
-
 ### build/index.d.ts#ShapeOptions
 export interface ShapeOptions {
   readonly typescript?: boolean;
 }
+
+### build/index.d.ts#TYPESCRIPT_READ
+export declare const TYPESCRIPT_READ: boolean;
 
 ### build/index.d.ts#containsShape
 export declare function containsShape(haystack: readonly string[], needle: readonly string[]): boolean;
