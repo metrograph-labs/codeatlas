@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@mark1russell7/code-shape",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The light shape of a function: tokens with each name and literal replaced by its kind, and a hash, with no parser and no dependencies.",
   "keywords": [
     "clone",
@@ -44,7 +44,7 @@
     }
   },
   "engines": {
-    "node": ">=22.13"
+    "node": ">=22"
   },
   "scripts": {
     "build": "tsdown",

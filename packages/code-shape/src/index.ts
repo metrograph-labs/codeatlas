@@ -4,7 +4,13 @@
  * The package uses only the built-in modules of Node.js and has no parser. Thus a check in each CI can use it.
  */
 import { createHash } from "node:crypto";
-import { stripTypeScriptTypes } from "node:module";
+import * as nodeModule from "node:module";
+
+/**
+ * True when this Node.js has `stripTypeScriptTypes` of `node:module` (Node.js 22.13 and later). Without it, the package
+ * loads and reads JavaScript, but a read with `typescript` throws. A caller that runs on an older Node.js reads this first.
+ */
+export const TYPESCRIPT_READ: boolean = typeof nodeModule.stripTypeScriptTypes === "function";
 
 /** The options of a read. */
 export interface ShapeOptions {
@@ -191,7 +197,9 @@ function scan(source: string): Token[] {
 
 /** This function gives the source as JavaScript: with `typescript`, it removes the types and keeps each line. */
 function javascriptOf(source: string, options: ShapeOptions | undefined): string {
-  return options?.typescript === true ? stripTypeScriptTypes(source, { mode: "strip" }) : source;
+  if (options?.typescript !== true) return source;
+  if (!TYPESCRIPT_READ) throw new Error(`code-shape: a read with typescript needs Node.js 22.13 or later (stripTypeScriptTypes of node:module), and this is Node.js ${process.versions.node}`);
+  return nodeModule.stripTypeScriptTypes(source, { mode: "strip" });
 }
 
 /**

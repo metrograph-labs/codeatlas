@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { containsShape, functionsOf, MIN_SHAPE_TOKENS, shapeHash, shapeTokens } from "./index.ts";
+import { containsShape, functionsOf, MIN_SHAPE_TOKENS, shapeHash, shapeTokens, TYPESCRIPT_READ } from "./index.ts";
 
 /** This function gives the shape hash of the one top-level function of a source. */
 function hashOf(source: string, typescript = false): string {
@@ -197,5 +197,12 @@ describe("containsShape", () => {
   it("gives false for a needle under the floor", () => {
     expect(containsShape(long, long.slice(1))).toBe(false);
     expect(containsShape(long, [])).toBe(false);
+  });
+});
+
+describe("TYPESCRIPT_READ", () => {
+  it("is true from Node.js 22.13, the first version with stripTypeScriptTypes", () => {
+    const [major, minor] = process.versions.node.split(".").map(Number) as [number, number];
+    expect(TYPESCRIPT_READ).toBe(major > 22 || (major === 22 && minor >= 13));
   });
 });
